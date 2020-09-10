@@ -1,0 +1,34 @@
+apply plugin: "java"
+
+sourceCompatibility = 1.8
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+sourceSets.main.java.srcDirs = [ "src/" ]
+sourceSets.main.resources.srcDirs = ["assets/"]
+
+project.ext.mainClassName = "com.labyrinth.game.Launcher"
+project.ext.assetsDir = new File(".../core/assets")
+
+task run(dependsOn: classes, type: JavaExec) {
+    main = project.mainClassName
+    standardInput = System.in
+    workingDir = project.assetsDir
+    ignoreExitValue = true;
+}
+
+task dist(type: Jar) {
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+    }
+
+    dependsOn configurations.runtimeClasspath
+    from configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+
+    with jar
+}
+
+
+dist.dependsOn classes
+
+
+eclipse.project.name = appName + "-core"
