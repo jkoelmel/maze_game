@@ -1,10 +1,4 @@
-# csc413-tankgame
-
-## Student Name  : Jarett Koelmel
-## Student ID    : 920135967
-
-
-##File structure differs from standard due to usage of LibGDX library  
+# Maze Game
 
 ## core and desktop folder hold all relevant source code for the game  
 
@@ -12,4 +6,4 @@
 
 ## .gradle files are included to handle command line creation of JAR and dependency management    
 
-## jar folder is used to store the built jar of your term-project. NO SOURCE CODE SHOULD BE IN THIS FOLDER. DOING SO WILL CAUSE POINTS TO BE DEDUCTED
+## The maze is generated using DFS and is adjustable to tailor maze type, the path-finding is handled via BFS and is also adjustable to affect speed of the enemy.
